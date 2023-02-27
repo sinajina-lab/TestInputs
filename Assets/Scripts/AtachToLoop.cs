@@ -8,6 +8,9 @@ public class AtachToLoop : MonoBehaviour
     //parent new Gameobject to the loop
     //parent the player to the new Game object
 
+    // The amount of force to apply when launching the player
+    public float launchForce = 10f;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //detect contact with the loop
@@ -30,6 +33,10 @@ public class AtachToLoop : MonoBehaviour
 
             //set the player's rigidbod to kinematic to nullify gravity
             GetComponent<Rigidbody2D>().isKinematic = true;
+
+            // apply force to launch the player onto the next ground loop
+            Vector2 launchDirection = collision.gameObject.transform.right; // get the right direction of the loop
+            GetComponent<Rigidbody2D>().AddForce(launchDirection * launchForce, ForceMode2D.Impulse);
         }
     }
 }

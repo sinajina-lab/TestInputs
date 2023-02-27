@@ -5,9 +5,11 @@ using UnityEngine;
 public class LoopSpin : MonoBehaviour
 {
     [SerializeField] float spinSpeed;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] float speedModifier;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.Rotate(0, 0, spinSpeed);
+        rb.angularVelocity = spinSpeed * speedModifier;
     }
 }

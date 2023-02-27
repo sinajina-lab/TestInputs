@@ -13,7 +13,7 @@ public class DetectInput : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            OnTapped.Invoke();
+            OnTapped?.Invoke();
         }
     }
 
